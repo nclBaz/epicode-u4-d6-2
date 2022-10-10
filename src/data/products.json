@@ -1,1 +1,75 @@
-[{"name":"3310","description":"somthing longer","brand":"nokia","price":100,"category":"smartphones","reviews":[],"createdAt":"2022-10-10T08:19:49.624Z","id":"36k8agg4l92i7855"},{"name":"3210","description":"somthing longer","brand":"nokia","price":100,"category":"smartphones","createdAt":"2022-10-10T09:51:55.127Z","id":"36k8abc4l92lhnnc","reviews":[{"comment":"not that good","rate":2,"id":"36k8abc4l92lhw8f","createdAt":"2022-10-10T09:52:06.256Z","updatedAt":"2022-10-10T10:26:22.277Z"}]}]
+[
+  {
+    "name": "3310",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphones",
+    "reviews": [],
+    "createdAt": "2022-10-10T08:19:49.624Z",
+    "id": "36k8agg4l92i7855"
+  },
+  {
+    "name": "3210",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphones",
+    "createdAt": "2022-10-10T09:51:55.127Z",
+    "id": "36k8abc4l92lhnnc",
+    "sku": 5,
+    "reviews": [
+      {
+        "comment": "not that good",
+        "rate": 2,
+        "id": "36k8abc4l92lhw8f",
+        "createdAt": "2022-10-10T09:52:06.256Z",
+        "updatedAt": "2022-10-10T10:26:22.277Z"
+      }
+    ]
+  },
+  {
+    "name": "3210",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphone",
+    "createdAt": "2022-10-10T10:50:37.892Z",
+    "id": "36k8a5b4l92nl5tx",
+    "sku": 6,
+    "reviews": []
+  },
+  {
+    "name": "3210",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphone",
+    "sku": 1,
+    "createdAt": "2022-10-10T11:01:12.756Z",
+    "id": "36k8a9bol92nyrp1",
+    "reviews": []
+  },
+  {
+    "name": "3210",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphone",
+    "sku": 3,
+    "createdAt": "2022-10-10T11:01:53.799Z",
+    "id": "36k8afc8l92nznd4",
+    "reviews": []
+  },
+  {
+    "name": "3210",
+    "description": "somthing longer",
+    "brand": "nokia",
+    "price": 100,
+    "category": "smartphone",
+    "sku": 4,
+    "createdAt": "2022-10-10T11:02:29.615Z",
+    "id": "36k8a4skl92o0f00",
+    "reviews": []
+  }
+]

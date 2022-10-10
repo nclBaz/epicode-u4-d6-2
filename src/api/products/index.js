@@ -16,17 +16,27 @@ import {
   saveNewReview,
 } from "../../lib/db/reviews.js"
 import { saveProductsImages } from "../../lib/fs/tools.js"
+import {
+  checkNewProductSchema,
+  checkUpdateProductSchema,
+  checkValidationResult,
+} from "./productsValidation.js"
 
 const productsRouter = express.Router()
 
-productsRouter.post("/", async (req, res, next) => {
-  try {
-    const id = await saveNewProduct(req.body)
-    res.status(201).send({ id })
-  } catch (error) {
-    next(error)
+productsRouter.post(
+  "/",
+  checkNewProductSchema,
+  checkValidationResult,
+  async (req, res, next) => {
+    try {
+      const id = await saveNewProduct(req.body)
+      res.status(201).send({ id })
+    } catch (error) {
+      next(error)
+    }
   }
-})
+)
 
 productsRouter.get("/", async (req, res, next) => {
   try {
@@ -56,27 +66,32 @@ productsRouter.get("/:productId", async (req, res, next) => {
   }
 })
 
-productsRouter.put("/:productId", async (req, res, next) => {
-  try {
-    const updatedProduct = await findProductByIdAndUpdate(
-      req.params.productId,
-      req.body
-    )
-    if (updatedProduct) {
-      res.send(updatedProduct)
-    } else {
-      // 404
-      next(
-        createHttpError(
-          404,
-          `Product with id ${req.params.productId} not found!`
-        )
+productsRouter.put(
+  "/:productId",
+  checkUpdateProductSchema,
+  checkValidationResult,
+  async (req, res, next) => {
+    try {
+      const updatedProduct = await findProductByIdAndUpdate(
+        req.params.productId,
+        req.body
       )
+      if (updatedProduct) {
+        res.send(updatedProduct)
+      } else {
+        // 404
+        next(
+          createHttpError(
+            404,
+            `Product with id ${req.params.productId} not found!`
+          )
+        )
+      }
+    } catch (error) {
+      next(error)
     }
-  } catch (error) {
-    next(error)
   }
-})
+)
 
 productsRouter.delete("/:productId", async (req, res, next) => {
   try {

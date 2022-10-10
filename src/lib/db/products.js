@@ -61,3 +61,9 @@ export const findProductByIdAndDelete = async productId => {
     throw createHttpError(404, `Product with id ${productId} not found!`)
   }
 }
+
+export const findProductBySKU = async sku => {
+  const products = await getProducts()
+  const foundProduct = products.find(product => product.sku === sku)
+  return foundProduct
+}

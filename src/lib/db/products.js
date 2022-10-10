@@ -1,6 +1,10 @@
 import createHttpError from "http-errors"
 import uniqid from "uniqid"
-import { getProducts, writeProducts } from "../fs/tools.js"
+import {
+  deleteProductsImages,
+  getProducts,
+  writeProducts,
+} from "../fs/tools.js"
 
 export const saveNewProduct = async newProductData => {
   const products = await getProducts()
@@ -43,10 +47,17 @@ export const findProductByIdAndUpdate = async (productId, updates) => {
 export const findProductByIdAndDelete = async productId => {
   const products = await getProducts()
 
-  const remainingProducts = products.filter(product => product.id !== productId)
+  const product = await findProductById(productId)
 
-  if (products.length === remainingProducts.length)
+  if (product) {
+    await deleteProductsImages(product.imageUrl)
+
+    const remainingProducts = products.filter(
+      product => product.id !== productId
+    )
+
+    await writeProducts(remainingProducts)
+  } else {
     throw createHttpError(404, `Product with id ${productId} not found!`)
-
-  await writeProducts(remainingProducts)
+  }
 }

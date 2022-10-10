@@ -4,7 +4,12 @@ import { getProducts, writeProducts } from "../fs/tools.js"
 
 export const saveNewProduct = async newProductData => {
   const products = await getProducts()
-  const newProduct = { ...newProductData, createdAt: new Date(), id: uniqid() }
+  const newProduct = {
+    ...newProductData,
+    createdAt: new Date(),
+    id: uniqid(),
+    reviews: [],
+  }
   products.push(newProduct)
   await writeProducts(products)
 
